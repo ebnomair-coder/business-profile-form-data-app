@@ -1,0 +1,273 @@
+:root {
+    --primary-color: #1a6f65;
+    --primary-light: #218c80;
+    --secondary-color: #f5f8f7;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #e0e0e0;
+    --bg-color: #fafafa;
+    --accent-color: #d8b257;
+    --error-color: #e74c3c;
+    --success-color: #2ecc71;
+}
+
+.form-container {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    border-top: 5px solid var(--primary-color);
+    margin: 2rem auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.data-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-section {
+    background: var(--secondary-color);
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: right;
+}
+
+.form-section:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border-color: var(--primary-light);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(26, 111, 101, 0.1);
+    flex-direction: row-reverse;
+}
+
+.section-title svg {
+    color: var(--primary-color);
+}
+
+.section-title h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.field-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    text-align: right;
+    direction: rtl;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 111, 101, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+
+.whatsapp-reminder {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #dcf8c6, #e8fce0);
+    border: 1px solid #b5e6a3;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    direction: rtl;
+    text-align: right;
+}
+
+.whatsapp-reminder svg {
+    color: #25D366;
+    flex-shrink: 0;
+}
+
+.whatsapp-reminder-text h4 {
+    color: #1a5e30;
+    margin: 0 0 0.3rem 0;
+    font-size: 1rem;
+}
+
+.whatsapp-reminder-text p {
+    color: #3a7d4a;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.file-upload-group {
+    margin-bottom: 1.5rem;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-upload-wrapper:hover, .file-upload-wrapper.dragover {
+    border-color: var(--primary-color);
+    background: rgba(26, 111, 101, 0.02);
+}
+
+.file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.file-upload-design {
+    text-align: center;
+    pointer-events: none;
+}
+
+.file-upload-design svg {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.file-upload-design p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.photo-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.preview-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26, 111, 101, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-section {
+        padding: 1.2rem;
+    }
+}
