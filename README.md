@@ -95,3 +95,8 @@ const firebaseConfig = {
 ## 📜 الرخصة
 
 هذا المشروع تابع لوكالة **ابن عمير** — جميع الحقوق محفوظة.
+
+---
+
+## 🛠 Workflow & CI/CD Guide
+For detailed instructions on how this project was connected to GitHub and Firebase Hosting for automated deployments, check out the [Workflow Guide](file:///C:/Users/Mo/.gemini/antigravity/brain/5dd27399-69a6-4f2e-8530-576fcdca4208/workflow_guide.md).
