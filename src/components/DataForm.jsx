@@ -8,7 +8,8 @@ import {
   Images, 
   Loader2, 
   Send,
-  MessageSquare
+  MessageSquare,
+  MapPin
 } from 'lucide-react';
 import { db, storage } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -18,10 +19,12 @@ import '../form.css';
 const DataForm = () => {
   const [formData, setFormData] = useState({
     tradeName: '',
-    address: '',
     phone: '',
-    description: '',
     gmail: '',
+    description: '',
+    city: '',
+    street: '',
+    postalCode: '',
   });
 
   const [logo, setLogo] = useState(null);
@@ -88,10 +91,12 @@ const DataForm = () => {
       // Reset Form
       setFormData({
         tradeName: '',
-        address: '',
         phone: '',
-        description: '',
         gmail: '',
+        description: '',
+        city: '',
+        street: '',
+        postalCode: '',
       });
       setLogo(null);
       setPhotos([]);
@@ -123,7 +128,7 @@ const DataForm = () => {
           </div>
           
           <div className="input-group">
-            <label htmlFor="tradeName">الاسم التجاري</label>
+            <label htmlFor="tradeName">الاسم التجاري (اجباري)</label>
             <input 
               type="text" 
               id="tradeName" 
@@ -136,20 +141,7 @@ const DataForm = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="address">العنوان الدقيق</label>
-            <input 
-              type="text" 
-              id="address" 
-              name="address" 
-              required 
-              placeholder="أدخل عنوان المقر بالتفصيل"
-              value={formData.address}
-              onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="phone">رقم الهاتف</label>
+            <label htmlFor="phone">رقم الهاتف (اجباري)</label>
             <input 
               type="tel" 
               id="phone" 
@@ -157,6 +149,96 @@ const DataForm = () => {
               required 
               placeholder="مثال: 05XXXXXXXX"
               value={formData.phone}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
+        {/* Section 2: Gmail Account */}
+        <div className="form-section">
+          <div className="section-title">
+            <Mail size={24} />
+            <h3>حساب Gmail</h3>
+          </div>
+          
+          <div className="input-group">
+            <label htmlFor="gmail">بريد Gmail (اختياري)</label>
+            <p className="field-hint">لربط ملكية الملف التجاري بك.</p>
+            <input 
+              type="email" 
+              id="gmail" 
+              name="gmail" 
+              placeholder="example@gmail.com"
+              value={formData.gmail}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
+        {/* Section 3: About Activity */}
+        <div className="form-section">
+          <div className="section-title">
+            <PenSquare size={24} />
+            <h3>نبذة عن النشاط</h3>
+          </div>
+          
+          <div className="input-group">
+            <label htmlFor="description">وصف مبسط لخدماتك (اجباري)</label>
+            <p className="field-hint">سنقوم بصياغته تسويقياً من أجلك.</p>
+            <textarea 
+              id="description" 
+              name="description" 
+              rows="4" 
+              required 
+              placeholder="اكتب هنا نبذة عن ما يقدمه نشاطك التجاري..."
+              value={formData.description}
+              onChange={handleInputChange}
+            ></textarea>
+          </div>
+        </div>
+
+        {/* Section 4: Exact Address */}
+        <div className="form-section">
+          <div className="section-title">
+            <MapPin size={24} />
+            <h3>العنوان الدقيق</h3>
+          </div>
+          
+          <div className="input-group">
+            <label htmlFor="city">المدينة (اجباري)</label>
+            <input 
+              type="text" 
+              id="city" 
+              name="city" 
+              required 
+              placeholder="مثال: الرياض"
+              value={formData.city}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="street">الشارع (اجباري)</label>
+            <input 
+              type="text" 
+              id="street" 
+              name="street" 
+              required 
+              placeholder="مثال: شارع العليا"
+              value={formData.street}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="postalCode">الرمز البريدي (اجباري)</label>
+            <input 
+              type="text" 
+              id="postalCode" 
+              name="postalCode" 
+              required 
+              placeholder="مثال: 12345"
+              value={formData.postalCode}
               onChange={handleInputChange}
             />
           </div>
@@ -179,49 +261,6 @@ const DataForm = () => {
           </div>
         </div>
 
-        {/* Section 3: About Activity */}
-        <div className="form-section">
-          <div className="section-title">
-            <PenSquare size={24} />
-            <h3>نبذة عن النشاط</h3>
-          </div>
-          
-          <div className="input-group">
-            <label htmlFor="description">وصف مبسط لخدماتك</label>
-            <p className="field-hint">سنقوم بصياغته تسويقياً من أجلك.</p>
-            <textarea 
-              id="description" 
-              name="description" 
-              rows="4" 
-              required 
-              placeholder="اكتب هنا نبذة عن ما يقدمه نشاطك التجاري..."
-              value={formData.description}
-              onChange={handleInputChange}
-            ></textarea>
-          </div>
-        </div>
-
-        {/* Section 4: Gmail Account */}
-        <div className="form-section">
-          <div className="section-title">
-            <Mail size={24} />
-            <h3>حساب Gmail</h3>
-          </div>
-          
-          <div className="input-group">
-            <label htmlFor="gmail">بريد Gmail</label>
-            <p className="field-hint">لربط ملكية الملف التجاري بك.</p>
-            <input 
-              type="email" 
-              id="gmail" 
-              name="gmail" 
-              required 
-              placeholder="example@gmail.com"
-              value={formData.gmail}
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
 
         <button type="submit" className="submit-btn" disabled={isSubmitting}>
           {isSubmitting ? (
